@@ -17,6 +17,7 @@ from .async_manager import AsyncManager
 from .async_namespace import AsyncNamespace, AsyncClientNamespace
 from .async_redis_manager import AsyncRedisManager
 from .async_aiopika_manager import AsyncAioPikaManager
+from .async_pg_manager import AsyncPgManager
 from .asgi import ASGIApp
 
 __all__ = ['SimpleClient', 'Client', 'Server', 'Manager', 'PubSubManager',
@@ -25,4 +26,4 @@ __all__ = ['SimpleClient', 'Client', 'Server', 'Manager', 'PubSubManager',
            'AsyncSimpleClient', 'AsyncClient', 'AsyncServer',
            'AsyncNamespace', 'AsyncClientNamespace', 'AsyncManager',
            'AsyncRedisManager', 'ASGIApp', 'get_tornado_handler',
-           'AsyncAioPikaManager']
+           'AsyncAioPikaManager', 'AsyncPgManager']
