@@ -1,5 +1,6 @@
 import asyncio
 import json
+import traceback
 
 try:  # pragma: no cover
     import psycopg
@@ -72,6 +73,10 @@ class AsyncPgManager(AsyncPubSubManager):  # pragma: no cover
                     f"Cannot publish to postgres..."
                     + (f"retrying {i + 1}" if i + 1 < retry_count else "giving up"),
                 )
+            except Exception as e:
+                self._get_logger().error(
+                    f"Cannot publish to postgres due to unknown error, giving up")
+                raise e
 
     async def _listen(self):
         retry_sleep = 1
@@ -97,3 +102,9 @@ class AsyncPgManager(AsyncPubSubManager):  # pragma: no cover
                 if retry_sleep > 60:
                     retry_sleep = 60
                 pass
+            except:
+                self._get_logger().error(
+                    "Cannot listen due to error, aborting _listen."
+                )
+                traceback.print_exc()
+                raise asyncio.CancelledError
