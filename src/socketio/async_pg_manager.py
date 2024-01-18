@@ -11,12 +11,12 @@ from .async_pubsub_manager import AsyncPubSubManager
 
 
 class AsyncPgManager(AsyncPubSubManager):  # pragma: no cover
-    """Redis based client manager for asyncio servers.
+    """Postgres based client manager for asyncio servers.
 
-    This class implements a Redis backend for event sharing across multiple
+    This class implements a Postgres backend for event sharing across multiple
     processes.
 
-    To use a Redis backend, initialize the :class:`AsyncServer` instance as
+    To use a Postgres backend, initialize the :class:`AsyncServer` instance as
     follows::
 
         server = socketio.AsyncServer(
